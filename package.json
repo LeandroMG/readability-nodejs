@@ -11,7 +11,7 @@
   "main": "index.js",
   "scripts": {},
   "engines": {
-    "node": ">=8.14.0"
+    "node": "8"
   },
   "dependencies": {},
   "devDependencies": {},

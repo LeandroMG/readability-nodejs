@@ -1,0 +1,19 @@
+{
+  "name": "readability-nodejs",
+  "version": "0.0.1",
+  "description": "Fork of mozilla/readability to work with node",
+  "homepage": "https://github.com/LeandroMG/readability-nodejs",
+  "repository": {
+    "type": "git",
+    "url": "github:LeandroMG/readability-nodejs"
+  },
+  "author": "leandromg",
+  "main": "index.js",
+  "scripts": {},
+  "engines": {
+    "node": ">=8.14.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "license": "MIT"
+}

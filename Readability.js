@@ -150,7 +150,7 @@ Readability.prototype = {
   ],
 
   // These are the classes that readability sets itself.
-  CLASSES_TO_PRESERVE: [ "page" ],
+  CLASSES_TO_PRESERVE: [ "" ],
 
   /**
    * Run any post-process modifications to article content as necessary.
@@ -1751,6 +1751,57 @@ Readability.prototype = {
   },
 
   /**
+   * Attempts to get main image from processed article.
+   *
+   * @return Object with optional "image" property.
+  */
+  _getArticleImage: function() {
+    // Naive approach. WIP
+    var image = null;
+    var tags = ["picture", "figure"];
+
+    var elements = this._getAllNodesWithTag(this._doc, tags);
+    this._forEachNode(elements, function(element) {
+      var nodes = element.childNodes;
+      if (nodes) {
+        nodes.forEach(node => {
+          if (node.nodeName.toLowerCase() === "img") {
+            if (node.hasAttribute("src")) {
+              image = node.getAttribute("src");
+            }
+          }
+        })
+      }
+    });
+
+    return image
+  },
+
+  /**
+   * Attempts to get images from article.
+   *
+   * @return Object with optional "image" property.
+  */
+ _getArticleImages: function() {
+  // Fallback method. WIP
+  var images = [];
+  
+  var elements = this._doc.getElementsByTagName("img");
+  if (elements) {
+    for (var i = 0; i < elements.length; ++i) {
+      var node = elements[i];
+      if(node.nodeName.toLowerCase() === "img") {
+        if(node.hasAttribute("src")) {
+          images.push(node.getAttribute("src"));
+        }
+      }
+    }
+  }
+
+  return images
+ },
+
+  /**
    * Runs readability.
    *
    * Workflow:
@@ -1779,6 +1830,9 @@ Readability.prototype = {
     var metadata = this._getArticleMetadata();
     this._articleTitle = metadata.title;
 
+    var _image = this._getArticleImage();
+    var _images = this._getArticleImages();
+
     var articleContent = this._grabArticle();
     if (!articleContent)
       return null;
@@ -1806,7 +1860,9 @@ Readability.prototype = {
       textContent: textContent,
       length: textContent.length,
       excerpt: metadata.excerpt,
-      siteName: metadata.siteName || this._articleSiteName
+      siteName: metadata.siteName || this._articleSiteName,
+      image: _image,
+      images: _images
     };
   }
 };

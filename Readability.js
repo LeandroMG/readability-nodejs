@@ -1778,7 +1778,7 @@ Readability.prototype = {
   },
 
   /**
-   * Attempts to get images from article.
+   * Attempts to get images processed article.
    *
    * @return Object with optional "image" property.
   */

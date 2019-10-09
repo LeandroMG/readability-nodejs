@@ -1,6 +1,6 @@
 # readability-nodejs
 
-Port of [@mozilla/readability.js](https://github.com/mozilla/readability) to work with Node.
+Bridge of [@mozilla/readability.js](https://github.com/mozilla/readability) library to work with Node.
 
 Added new features to get images from processed article. Work in progress.
 

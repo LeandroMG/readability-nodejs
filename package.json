@@ -5,9 +5,10 @@
   "homepage": "https://github.com/LeandroMG/readability-nodejs",
   "repository": {
     "type": "git",
-    "url": "github:LeandroMG/readability-nodejs"
+    "url": "https://github.com/mozilla/readability"
   },
   "author": "leandromg",
+  "keywords": ["readability", "readability-node"],
   "main": "index.js",
   "scripts": {},
   "engines": {
